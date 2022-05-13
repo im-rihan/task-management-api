@@ -11,7 +11,7 @@ import { AuthModule } from './auth/auth.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '78626458',
+      password: 'root',
       database: 'task-management',
       autoLoadEntities: true,
       synchronize: true,
