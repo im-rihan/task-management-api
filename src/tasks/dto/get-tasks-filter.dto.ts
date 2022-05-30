@@ -3,13 +3,13 @@ import { TaskStatus } from '../tasks-status.enum';
 
 
 export class TaskFilterDto {
-  @IsOptional()
-  @IsEnum(TaskStatus)
-  status?: TaskStatus;
+	@IsOptional()
+	@IsEnum(TaskStatus)
+	status?: TaskStatus;
 
-  @IsOptional()
-  @IsString()
-  search?: string;
+	@IsOptional()
+	@IsString()
+	search?: string;
 }
 
 // docker run --name mysql-nest -p 5432:5432 -e MYSQL_ROOT_PASSWORD=78626458 -d mysql

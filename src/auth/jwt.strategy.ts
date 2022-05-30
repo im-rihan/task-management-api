@@ -8,24 +8,24 @@ import { UsersRepository } from './user.repository';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(
-    @InjectRepository(UsersRepository)
-    private userRepository: UsersRepository,
-  ) {
-    super({
-      secretOrKey: 'topSecret51',
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    });
-  }
+	constructor(
+		@InjectRepository(UsersRepository)
+		private userRepository: UsersRepository,
+	) {
+		super({
+			secretOrKey: 'topSecret51',
+			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+		});
+	}
 
-  async validate(payload: JwtPayload): Promise<User> {
-    const { username } = payload;
-    const user: User = await this.userRepository.findOne({ where: { username: username } });
+	async validate(payload: JwtPayload): Promise<User> {
+		const { username } = payload;
+		const user: User = await this.userRepository.findOne({ where: { username: username } });
 
-    if (!user) {
-      throw new UnauthorizedException();
-    }
+		if (!user) {
+			throw new UnauthorizedException();
+		}
 
-    return user;
-  }
+		return user;
+	}
 }

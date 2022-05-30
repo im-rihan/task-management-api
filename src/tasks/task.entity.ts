@@ -4,18 +4,18 @@ import { User } from './../auth/user.entity';
 
 @Entity()
 export class Task {
-  @PrimaryGeneratedColumn()
-  id: number;
+	@PrimaryGeneratedColumn()
+	id: number;
 
-  @Column()
-  title: string;
+	@Column()
+	title: string;
 
-  @Column()
-  description: string;
+	@Column()
+	description: string;
 
-  @Column()
-  status: TaskStatus;
+	@Column()
+	status: TaskStatus;
 
-  @ManyToOne(type => User, (user) => user.task, { eager: true })
-  user: User[]
+	@ManyToOne(type => User, (user) => user.task, { eager: true })
+	user: User[]
 }

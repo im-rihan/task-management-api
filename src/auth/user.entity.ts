@@ -4,15 +4,15 @@ import { Task } from './../tasks/task.entity';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+	@PrimaryGeneratedColumn()
+	id: number;
 
-  @Column({ unique: true })
-  username: string;
+	@Column({ unique: true })
+	username: string;
 
-  @Column()
-  password: string;
+	@Column()
+	password: string;
 
-  @OneToMany(type => Task, (task) => task.user, { eager: false })
-  task: Task[]
+	@OneToMany(type => Task, (task) => task.user, { eager: false })
+	task: Task[]
 }
