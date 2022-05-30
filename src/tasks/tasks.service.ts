@@ -11,14 +11,14 @@ export class TasksService {
   constructor(
     @InjectRepository(TasksRepository)
     private tasksRepository: TasksRepository,
-  ) {}
+  ) { }
 
   getTasks(filterDto: TaskFilterDto): Promise<Task[]> {
     return this.tasksRepository.getTasks(filterDto);
   }
 
   async getTaskById(id: number): Promise<Task> {
-    const found = await this.tasksRepository.findOneById(id);
+    const found = await this.tasksRepository.findOne({ where: { id: id } });
 
     if (!found) {
       throw new NotFoundException(`Task with ID "${id}" not found`);

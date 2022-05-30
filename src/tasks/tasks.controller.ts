@@ -19,7 +19,7 @@ import { AuthGuard } from '@nestjs/passport';
 @Controller('tasks')
 @UseGuards(AuthGuard())
 export class TasksController {
-  constructor(private tasksService: TasksService) {}
+  constructor(private tasksService: TasksService) { }
 
   @Get()
   getTasks(@Query() filterDto: TaskFilterDto): Promise<Task[]> {
@@ -27,8 +27,8 @@ export class TasksController {
   }
 
   @Get('/:id')
-  getTaskById(@Param('id') id: number): Promise<Task> {
-    return this.tasksService.getTaskById(id);
+  getTaskById(@Param('id') id: string): Promise<Task> {
+    return this.tasksService.getTaskById(parseInt(id));
   }
 
   @Post('create')
